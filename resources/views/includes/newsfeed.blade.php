@@ -28,7 +28,22 @@
             </div>
                 <div class="col-md-8 col-sm-6 mt-1 float-md-end">
                 <div class="collapse navbar-collapse d-flex flex-row-reverse " >
-                <li ><a href="" class="icon"><i class="fa fa-user icon_style ms-4" aria-hidden="true"></i></a></li>
+                    {{-- <li> --}}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fa fa-user fs-2 icon" href="#" role="button" data-bs-toggle="dropdown"></a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <div class="circular--portrait mt-2 ms-5">
+                                    <img src="../assets/img/myimg.jpg" alt="Avatar"  class=" logo_icon avatar">
+                                    
+                                    </div>
+                                </li>
+                                <li><a class="dropdown-item ps-4 " href="#">Chitradip Dey</a></li>
+                                <li><a class="dropdown-item ps-5 " href="logout.php">Log Out</a></li>
+                            </ul>
+                        </li>
+                    {{-- </li> --}}
+                {{-- <li ><a href="" class="icon"><i class="fa fa-user icon_style ms-4" aria-hidden="true"></i></a></li> --}}
                 <li ><a href="" class="icon"><i class="fa fa-bell icon_style ms-4" aria-hidden="true"></i></a></li>
                 <li ><a href="" class="icon"><i class="fa fa-comment icon_style ms-4" aria-hidden="true"></i></a></li>
                 <li ><a href="" class="icon"><i class="fa fa-shopping-cart icon_style ms-4" aria-hidden="true"></i></a></li>

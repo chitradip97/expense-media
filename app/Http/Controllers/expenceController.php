@@ -17,4 +17,10 @@ class expenceController extends Controller
     public function other_expense_view():View{
     return view('includes.other_expense');
     }
+    public function login_view():View{
+        return view('includes.login');
+    }
+    public function regster_view():View{
+        return view('includes.register');
+    }
 }

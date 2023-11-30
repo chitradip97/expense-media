@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\http\controllers\expenceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/myexpense_view',[expenceController::class,'myexpense_view']);
+Route::get('/newsfeed_view',[expenceController::class,'newsfeed_view']);
+Route::get('/other_expense_view',[expenceController::class,'other_expense_view']);

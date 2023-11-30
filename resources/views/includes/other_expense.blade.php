@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
@@ -43,9 +43,9 @@
     <div class="row  ">  -->
 <div class="left_sidebar  mt-2 ms-2">
     <nav id="sidebar" class="bg_color  p-4  ">
-            <a href="news_feed.php" class="anchor "><h5 class="bar_option">News Feed</h5></a>
-            <a href="files_header_updated.php" class="anchor"><h5 class="bar_option">My Expense</h5></a>
-            <a href="others_expendature.php" class="anchor"><h5 class="bar_option bg-primary">Others Expense</h5></a>
+            <a href="{{'/newsfeed_view'}}" class="anchor "><h5 class="bar_option">News Feed</h5></a>
+            <a href="{{'/myexpense_view'}}" class="anchor"><h5 class="bar_option">My Expense</h5></a>
+            <a href="{{'/other_expense_view'}}" class="anchor"><h5 class="bar_option bg-primary">Others Expense</h5></a>
             <a href="create_order.php" class="anchor"><h5 class="bar_option">Contribution</h5></a>
             <a href="orders_list.php" class="anchor"><h5 class="bar_option">Others</h5></a>
     </nav>
@@ -123,10 +123,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -143,10 +140,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -163,10 +157,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                   
                                 </tr>
 
                                 <tr>
@@ -183,10 +174,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                   
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -202,10 +190,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -222,10 +207,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 
@@ -270,10 +252,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -290,10 +269,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -310,10 +286,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -330,10 +303,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                   
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -349,10 +319,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -369,10 +336,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 
@@ -417,10 +381,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                   
                                 </tr>
 
                                 <tr>
@@ -437,10 +398,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -457,10 +415,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 <tr>
@@ -477,10 +432,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
                                 <tr>
                                     <td>2</td>
@@ -496,10 +448,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                   
                                 </tr>
 
                                 <tr>
@@ -516,10 +465,7 @@
                                         </select>
                                         
                                     </td>
-                                    <!-- <td>
-                                        <a href="view_customer_edit.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-success">Edit</button></a>
-                                        <a href="view_customer_delete.php?id=<?php echo $list['Customer_id'];?>"><button type="button" class="btn btn-danger">Delete</button></a>
-                                    </td> -->
+                                    
                                 </tr>
 
                                 

@@ -1,0 +1,195 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    overflow:visible;
+}
+.icon{
+    color: rgb(10, 10, 10) ;
+    text-decoration: none !important;
+   
+}
+li {
+    list-style-type: none;
+  }
+.icon_style{
+    font: normal normal normal 50px/2 FontAwesome !important;
+    font-size:xx-large !important;
+}
+
+
+/* left sidebar */
+.submenu{
+    display: none;
+}
+/* .clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+    
+} */
+/* .left_sidebar{
+    position: fixed;
+    float: left;
+    width: 20%;
+    height: 100vh;
+    background-color: blueviolet !important;
+    
+    border: 1px solid black;
+} */
+
+.bg_color{
+    background-color: rgb(202, 221, 228);
+}
+.bar_option{
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(42, 42, 84);
+    text-align: center;
+}
+.anchor{
+    color:white ;
+    text-decoration: none !important;
+
+}
+
+/* right sidebar */
+
+/* .right_sidebar{
+    position: fixed;
+    float:right;
+    width: 20%;
+    height: 100vh;
+    background-color: blueviolet !important;
+    
+    border: 1px solid black; 
+} */
+
+/* test */
+/* top sidebar{ */
+    .top_nav{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+    }
+/* .left_sidebar */
+    .left_sidebar{
+        position: fixed;
+        right: 80%;
+        top:10%;
+        width: 20%;
+        height: 100vh;
+        background-color: blueviolet !important;
+        /* overflow: scroll; */
+        border: 1px solid black;
+    }
+/* .right_sidebar */
+    .right_sidebar{
+        position: fixed;
+        top:10%;
+        left:80%;
+        width: 20%;
+        height: 99vh;
+        background-color: blueviolet !important;
+        /* overflow: scroll; */
+        border: 1px solid black; 
+    }
+    #sidebar{
+        height: 100vh !important;
+    }
+    .body_content{
+        background-color: azure;
+        position: relative;
+        width: 58%;
+        left: 5px;
+        top: 70px;
+    }
+    /* footer{
+        background-color: bisque;
+    } */
+    .footer_content{
+        background-color: rgb(210, 227, 231);
+        }
+
+        /* Chatbox */
+
+        .container {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            
+          }
+          
+          .darker {
+            border-color: #ccc;
+            background-color: #f3e116;
+          }
+          .lighter{
+            border-color: #ccc;
+            background-color: rgb(34, 169, 227);
+          }
+          
+          .container::after {
+            content: "";
+            clear: both;
+            display: table;
+          }
+          
+          .container .chat_logo {
+            float: left;
+            max-width: 60px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+          }
+          
+          .container .chat_logo.right {
+            float: right;
+            margin-left: 20px;
+            margin-right:0;
+          }
+          
+          .time-right {
+            float: right;
+            color: #4f4e4e;
+          }
+          
+          .time-left {
+            float: left;
+            color: #4f4e4e;
+          }
+          .chat{
+            height: 370px;
+            overflow-y: scroll;
+          }
+          .chat_font{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 4px !important;
+          }
+
+          /* newsfeed */
+          /* logo icon */
+          /* .logo_icon{
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            
+            width: 60px;
+            z-index: 1;
+            
+          } */
+          .circular--portrait { 
+            position: relative;
+             width: 60px;
+            /* height: 50px;  */
+            overflow: hidden; 
+            border-radius: 50%; 
+          } 
+          .circular--portrait img {
+             width: 100%;
+              height: auto;
+              
+          }
+          

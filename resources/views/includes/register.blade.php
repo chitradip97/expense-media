@@ -21,27 +21,32 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
                                     <div class="card-body">
-                                        
-                                        <form>
+                                        @if($errors->any())
+                                        <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li style="color:red;">{{$error}}</li>
+                                        @endforeach    
+                                        </ul>
+                                        @endif
+                                        <form action="{{'/register_submit'}}" method="post" enctype="multipart/form-data">
+                                            @csrf
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputname" type="text" placeholder="Enter your name..." name="user_name"/>
+                                                <label for="inputname">Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="user_email"/>
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPass" type="text"/>
+                                                <input class="form-control" id="inputPass" type="text" name="user_password"/>
                                                 <label for="inputEmail">Password</label>
                                             </div>
-                                            {{-- <div class="form-floating mb-3">
-                                                <h5>Login as:</h5>
-                                                admin
-                                                <input type="radio" id="Admin" name="login_authorization" value="Admin">
-                                                user
-                                                <input type="radio" id="User" name="login_authorization" value="User">
-                                            </div> --}}
+                                           
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.php">Return to login</a>
-                                                <!-- <a class="btn btn-primary" href="login.html">Reset Password</a> -->
-                                                <input type="button" class="btn btn-primary" id="reset_btn" value="Reset Password">
+                                                <a class="small" href="{{'/login_view'}}">Return to login</a>
+                                                
+                                                <input type="submit" class="btn btn-primary" id="reset_btn" value="Reset Password">
                                             </div>
                                         </form>
                                     </div>

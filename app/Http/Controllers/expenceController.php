@@ -20,7 +20,27 @@ class expenceController extends Controller
     public function login_view():View{
         return view('includes.login');
     }
-    public function regster_view():View{
+    public function register_view():View{
         return view('includes.register');
+    }
+
+    public function register_submit(Request $request){
+        $request->validate([
+            'user_name'=>'required|min:3|max:30',
+            'user_email'=>'required',
+            'user_password'=>'required'
+            
+        ]);
+        $user_name=$request->input("user_name");
+        $user_email=$request->input("user_email");
+        $user_password=$request->input("user_password");
+        $data=[
+            'user_name'=>$user_name,
+            'user_email'=>$user_email,
+            'user_password'=>$user_password
+
+        ];
+        DB::table('user')->insert($data);
+        return view('includes/login')->with(['info'=>'Profile inserted Successfully']);
     }
 }

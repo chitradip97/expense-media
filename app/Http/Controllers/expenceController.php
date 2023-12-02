@@ -10,7 +10,14 @@ use Illuminate\Support\Facades\Cookie;
 class expenceController extends Controller
 {
     public function myexpense_view():View{
-        return view('includes.myexpense');
+        if (Cookie::has('user_email'))
+        {
+        $cookieValue = Cookie::get('user_email');
+        return view('includes.myexpense')->with(['user_email'=>$cookieValue]);;
+        }
+        else{
+            return view('includes.login');
+        }
     }
     public function newsfeed_view():View
     {
@@ -23,8 +30,17 @@ class expenceController extends Controller
         }
     
     }
-    public function other_expense_view():View{
-    return view('includes.other_expense');
+    public function other_expense_view():View
+    {   if (Cookie::has('user_email'))
+        {
+        $cookieValue = Cookie::get('user_email');
+        return view('includes.other_expense')->with(['user_email'=>$cookieValue]);;
+        }
+        else{
+            return view('includes.login');
+        }
+
+
     }
     public function login_view():View{
         return view('includes.login');

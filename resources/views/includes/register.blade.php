@@ -48,7 +48,7 @@
                                             </div>
                                            
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="{{'/login_view'}}">Return to login</a>
+                                                <a class="small" href="{{url('/login_view')}}">Return to login</a>
                                                 
                                                 <input type="submit" class="btn btn-primary" id="reset_btn" value="Reset Password">
                                             </div>

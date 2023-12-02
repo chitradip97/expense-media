@@ -95,7 +95,7 @@ class expenceController extends Controller
     {
         if (Cookie::has('user_email'))
         {
-            Cookie::forget('user_email');
+            Cookie::expire('user_email');
             return redirect('/login_view');
         }
 

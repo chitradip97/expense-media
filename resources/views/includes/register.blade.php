@@ -40,7 +40,11 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputPass" type="text" name="user_password"/>
-                                                <label for="inputEmail">Password</label>
+                                                <label for="inputPass">Password</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="inputAvatar" type="file" name="avatar"/>
+                                                <label for="inputAvatar">Avatar</label>
                                             </div>
                                            
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">

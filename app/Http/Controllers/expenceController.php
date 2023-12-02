@@ -23,7 +23,20 @@ class expenceController extends Controller
     {
         if (Cookie::has('user_email')){
             $cookieValue = Cookie::get('user_email');
-            return view('includes.newsfeed')->with(['user_email'=>$cookieValue]);
+            $user_data=DB::table('user')->where('user_email','=',$cookieValue)->get();
+            foreach($user_data as $data)
+            {
+            $user_name=$data->user_name;
+            $avatar=$data->avatar;
+            }
+            $data=[
+                'user_name'=>$user_name,
+                'user_email'=>$cookieValue,
+                'avatar'=>$avatar
+                
+    
+            ];
+            return view('includes.newsfeed')->with(['data'=>$data]);
         }
         else{
             return view('includes.login');
@@ -34,6 +47,7 @@ class expenceController extends Controller
     {   if (Cookie::has('user_email'))
         {
         $cookieValue = Cookie::get('user_email');
+        
         return view('includes.other_expense')->with(['user_email'=>$cookieValue]);;
         }
         else{

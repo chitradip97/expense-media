@@ -39,7 +39,7 @@
                                     </div>
                                 </li>
                                 <li><a class="dropdown-item ps-4 " href="#">Chitradip Dey</a></li>
-                                <li><a class="dropdown-item ps-5 " href="logout.php">Log Out</a></li>
+                                <li><a class="dropdown-item ps-5 " href="{{'/logout_user'}}">Log Out</a></li>
                             </ul>
                         </li>
                     {{-- </li> --}}

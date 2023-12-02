@@ -29,3 +29,5 @@ Route::get('/register_view',[expenceController::class,'register_view']);
 Route::post('/register_submit',[expenceController::class,'register_submit']);
 // login verify
 Route::post('/login_verify',[expenceController::class,'login_verify']);
+// logout system
+Route::post('/logout_user',[expenceController::class,'logout_user']);

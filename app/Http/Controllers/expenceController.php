@@ -5,14 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 
 class expenceController extends Controller
 {
     public function myexpense_view():View{
         return view('includes.myexpense');
     }
-    public function newsfeed_view():View{
-    return view('includes.newsfeed');
+    public function newsfeed_view():View
+    {
+        if (Cookie::has('user_email')){
+            $cookieValue = Cookie::get('user_email');
+            return view('includes.newsfeed')->with(['user_email'=>$cookieValue]);
+        }
+        else{
+            return view('includes.login');
+        }
+    
     }
     public function other_expense_view():View{
     return view('includes.other_expense');
@@ -69,7 +78,10 @@ class expenceController extends Controller
         {
             $user_password_DB=$data->user_password;
         }
-        if($user_password_DB==$user_password){
+        if($user_password_DB==$user_password)
+        {
+            Cookie::queue('user_email', $user_email, 1440);
+            //Cookie::make('user_password', $user_password, 1440);
             return redirect('/newsfeed_view');
           // return view('includes.newsfeed');
         }
@@ -77,5 +89,15 @@ class expenceController extends Controller
             // return redirect()->route('includes.login')->with('[info]','[Invalid login email or Password]');
             return back()->with('error','Invalid login email or Password.');
         }
+    }
+
+    public function logout_user()
+    {
+        if (Cookie::has('user_email'))
+        {
+            Cookie::forget('user_email');
+            return redirect('/login_view');
+        }
+
     }
 }

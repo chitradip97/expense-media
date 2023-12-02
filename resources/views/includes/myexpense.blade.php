@@ -11,6 +11,12 @@
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
+    {{-- cookies data --}}
+    <?php
+    if(isset($data))
+    $avatar=$data['avatar'];
+    $user_name=$data['user_name'];
+    ?>
       <!-- Top-Navbar -->
 <div class="top_nav" style="margin-bottom:10px;" >
     <nav class="navbar-light bg-info">
@@ -33,11 +39,11 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <div class="circular--portrait mt-2 ms-5">
-                                <img src="../assets/img/myimg.jpg" alt="Avatar"  class=" logo_icon avatar">
+                                <img src="{{$avatar}}" alt="Avatar"  class=" logo_icon avatar">
                                 
                                 </div>
                             </li>
-                            <li><a class="dropdown-item ps-4 " href="#">Chitradip Dey</a></li>
+                            <li><a class="dropdown-item ps-4 " href="#">{{$user_name}}</a></li>
                             <li><a class="dropdown-item ps-5 " href="{{'/logout_user'}}">Log Out</a></li>
                         </ul>
                 </li>   

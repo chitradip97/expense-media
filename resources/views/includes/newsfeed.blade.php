@@ -149,7 +149,7 @@
                                     <div class="row">
                                         <div class="col-sm-2 ">
                                             <div class="circular--portrait mt-3">
-                                            <img src="../assets/img/myimg.jpg" alt="Avatar"  class=" logo_icon avatar">
+                                            <img src="{{$avatar}}" alt="Avatar"  class=" logo_icon avatar">
                                             </div>
                                         </div>
                                         <div class="col-sm-10">

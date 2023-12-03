@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>roomies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    {{-- <script type="text/javascript" src="{{asset('assets/js/script.css')}}"></script> --}}
+    <script type="text/javascript" src="{{ URL::asset('assets/js/script.js') }}"></script>
+    {{-- <script src="{{ mix('assets/js/script.css') }}"></script> --}}
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
@@ -84,14 +89,15 @@
                 <div style="background-color:DodgerBlue;text-align: center;"><h4 style="display:inline-block; "><b>Add Expence :</b></h4></div>
                 <div class="chat mt-2">
                     <!-- <h2>Stacked form</h2> -->
-                    <form action="/action_page.php">
+                    {{-- <form action="/action_page.php"> --}}
+                        <div id="info"></div>
                         <div class="mb-3 mt-3">
-                            <label for="itm_nm">Items:</label>
+                            <label for="itm_nm">Items Name:</label>
                             <input type="text" class="form-control" id="itm_nm" placeholder="Enter Item" >
                         </div>
                         <div class="mb-3 mt-3">
-                            <label for="itm_amt">Amount:</label>
-                            <input type="number" class="form-control" id="itm_amt" placeholder="Enter Item amount" >
+                            <label for="itm_amt">Quantity:</label>
+                            <input type="number" class="form-control" id="itm_qty" placeholder="Enter Item amount" >
                         </div>
                         <div class="mb-3 mt-3">
                             <label for="itm_amt">Amount Unit:</label>
@@ -102,10 +108,15 @@
                                             <option value="Pc">Pc</option>
                             </select>
                         </div>
-                    </form>
+                        <div class="mb-3 mt-3">
+                            <label for="itm_amt">Price:</label>
+                            <input type="number" class="form-control" id="itm_prc" placeholder="Enter Item price" >
+                        </div>
+
+                    {{-- </form> --}}
                 </div>
                 
-                <button class="btn btn-primary mt-1 me-5 padding-bottom-3" style="float:right;">Update</button>
+                <button class="btn btn-primary mt-1 me-5 padding-bottom-3" style="float:right;" onclick=insert_data()>Update</button>
             <!-- </div> -->
         </nav>
 </div>
@@ -116,7 +127,14 @@
     <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card  ">
-                <div class="card-footer"> <h5 class="basic_font">My Expendature :</h5> </div>
+                <div class="card-footer">
+                    <div class="col-md-10 ">
+                     <h5 class="basic_font">My Expendature :</h5>
+                    </div>
+                     <div class="col-md-2 flex-end">
+                        <a href="{{url('/insert_crud')}}"><button type="button" class="btn btn-primary">Insert</button></a>
+                    </div> 
+                    </div>
                 <div class="card-body ">
                             
                                            
@@ -173,7 +191,7 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                {{-- <tr>
                                     <td>3</td>
                                     <td>21/5/23</td>
                                     <td>Gas</td>
@@ -349,7 +367,7 @@
                                         <a href="view_customer_delete.php"><button type="button" class="btn btn-danger">Delete</button></a>
                                     </td>
                                 </tr>
-                               
+                                --}}
 
 
 

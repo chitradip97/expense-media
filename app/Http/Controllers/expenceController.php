@@ -156,4 +156,22 @@ class expenceController extends Controller
         }
 
     }
+
+    public function insert_product(Request $request)
+    {
+            $name=$request->input('name');
+            $quantity=$request->input('quantity');
+            $weight=$request->input('weight');
+            $price=$request->input('price');
+            $Total_amount=$quantity*$price;
+            $data=[
+                'Item_name'=>$name,
+                'Item_quantity'=>$quantity,
+                'Item_unit'=>$weight,
+                'Item_price'=>$price,
+                'Total_amount'=>$Total_amount
+            ];
+            DB::table('product_data')->insert($data);
+            return response()->json(['active'=>1]);
+    }
 }

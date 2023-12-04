@@ -18,6 +18,7 @@ class expenceController extends Controller
             {
             $user_name=$data->user_name;
             $avatar=$data->avatar;
+            $user_id=$data->user_id;
             }
             $data=[
                 'user_name'=>$user_name,
@@ -190,4 +191,42 @@ class expenceController extends Controller
              return response()->json(['data'=>$info]);
          }
     }
+
+    public function update_product(Request $request)
+    {
+        $Product_id=$request->input('Product_id');
+            $quantity=$request->input('quantity');
+            //$weight=$request->input('weight');
+            $price=$request->input('price');
+            $Total_amount=$quantity*$price;
+            $data=[
+                
+                'Item_quantity'=>$quantity,
+                'Item_price'=>$price,
+                'Total_amount'=>$Total_amount
+            ];
+           // DB::table('product_data')->insert($data)->where('Sr_no'=>$Product_id);
+            $affectedRows=DB::table('product_data')
+            ->where('Sr_no',$Product_id)
+            ->update($data);
+            if(DB::table('product_data')->where('Sr_no','=',$Product_id)->get()->count()==1)
+            {
+                return response()->json(['active'=>1]);
+            }
+            //return response()->json(['active'=>1]);
+    }
+
+
+    public function delete_product(Request $request)
+        {
+            $Product_id=$request->input('product_id');
+            $affectedRows=DB::table('product_data')->where('Sr_no',$Product_id)->delete();
+            
+            if($affectedRows>0)
+            {
+                return response()->json(['active'=>1]);
+            }
+        }
 }
+
+        

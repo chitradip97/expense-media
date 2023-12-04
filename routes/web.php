@@ -37,3 +37,7 @@ Route::post('/insert_product',[expenceController::class,'insert_product']);
 Route::get('/view_data',[expenceController::class,'view_data']);
 // edit product data
 Route::post('/edit_data',[expenceController::class,'edit_data']);
+// update data
+Route::post('/update_product',[expenceController::class,'update_product']);
+// delete data
+Route::post('/delete_product',[expenceController::class,'delete_product']);

@@ -34,6 +34,7 @@ function insert_data()
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                  Your data is successfully inserted
                 </div>`);
+                onLoad();
                }
                else
                {
@@ -137,8 +138,8 @@ function editdata(id){
                  content=content+`
                  <td>${val.Date}</td>
                  <td>${val.Item_name}</td>
-                 <td><input type="number" id="itm_qty" style="width: 50px;" placeholder="Enter Item amount" value="${val.Item_quantity}">${val.Item_unit}</td>
-                 <td><input type="number" id="itm_prc" style="width: 50px;" placeholder="Enter Item price" value="${val.Item_price}" ></td>
+                 <td><input type="number" id="itm_qty_mod${val.Sr_no}" style="width: 50px;" placeholder="Enter Item amount" value="${val.Item_quantity}">${val.Item_unit}</td>
+                 <td><input type="number" id="itm_prc_mod${val.Sr_no}" style="width: 50px;" placeholder="Enter Item price" value="${val.Item_price}" ></td>
                  <td>${val.Total_amount}</td>
                  <td>
                     <button type="button" class="btn btn-success" onclick="updatedata(${val.Sr_no})">Update</button>
@@ -155,3 +156,91 @@ function editdata(id){
           }
      });
  }
+
+ function updatedata(id)
+{   var item_id=id;
+    // console.log("hello");
+    //let name=$('#itm_nm').val();
+    let itm_qty=$(`#itm_qty_mod${id}`).val();
+    //let weight=$(`itm_prc_mod${id}`).val();
+    let price=$(`#itm_prc_mod${id}`).val();
+    // var token = $('meta[name="csrf_token"]').attr('content');
+     console.log(price);
+     console.log(itm_qty);
+    // console.log(weight);
+    // console.log(token);
+    $.ajax({
+        'url':"/update_product",
+        'method':'post',
+        'headers': {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        'data':{
+            // '_token':token,
+             'Product_id':item_id,
+            'quantity':itm_qty,
+            // 'weight':weight,
+            'price':price
+        },
+        'success':function(data,status){
+            if(status=="success")
+            {
+                console.log(data);
+               if(data.active=1)
+               {
+                
+                onLoad();
+               }
+            }
+        },
+        'error':function (error){
+            console.log(error);
+        }
+    });
+}
+         
+                
+               
+
+
+function deletedata(id)
+{
+    console.log("hello");
+    let product_id=id;
+    // let tname=$('.utitle').val();
+    // let tdesc=$('.udesc').val();
+    $.ajax({
+        'url':"/delete_product",
+        'method':'post',
+        'headers': {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        'data':{
+            'product_id':product_id
+            // 'utitle':tname,
+            // 'udesc':tdesc
+        },
+        'success':function(data,status){
+            if(status=="success")
+            {
+                console.log(data);
+                // $('#info').html(`<h4 style="color:green; font-weight: bold">${data.message}</h4>`);
+                if(data.active=1)
+                {
+                    onLoad();
+                //  $('#info').html('<h4 style="color:green; font-weight: bold">Your data is successfully deleted.</h4>');
+                }
+            //    else if(data.active=0)
+            //    {
+            //     $('#info').html('<h4 style="color:red; font-weight: bold">There is some Error.</h4>');
+            //    }
+            }  
+               
+
+            // }
+        },
+        'error':function (error){
+            console.log(error);
+        }
+    });
+}

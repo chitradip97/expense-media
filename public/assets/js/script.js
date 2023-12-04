@@ -6,6 +6,7 @@ function insert_data()
     let itm_qty=$('#itm_qty').val();
     let weight=$('#weight').val();
     let price=$('#itm_prc').val();
+    var user_id=$('#user_id').val();
     var token = $('meta[name="csrf_token"]').attr('content');
     // console.log(price);
     // console.log(itm_qty);
@@ -18,7 +19,7 @@ function insert_data()
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         'data':{
-            // '_token':token,
+             'user_id':user_id,
             'name':name,
             'quantity':itm_qty,
             'weight':weight,
@@ -34,7 +35,7 @@ function insert_data()
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                  Your data is successfully inserted
                 </div>`);
-                onLoad();
+                onLoad(user_id);
                }
                else
                {
@@ -51,11 +52,12 @@ function insert_data()
     });
 }
 
-function onLoad(){
+function onLoad(user_id){
+var user_id=user_id;
     $.ajax({
         'url':"/view_data",
         'method':'get',
-        'data':{},
+        'data':{'user_id':user_id},
         'success':(data,status)=>{
              if(status =='success'){
                 // $('#table_data').html(`
@@ -87,8 +89,8 @@ function onLoad(){
                            <td>${obj.Item_price}</td>
                            <td>${obj.Total_amount}</td>
                            <td>
-                           <button type="button" class="btn btn-success" onclick="editdata(${obj.Sr_no})">Edit</button>
-                           <button type="button" class="btn btn-danger" onclick="deletedata(${obj.Sr_no})">Delete</button>
+                           <button type="button" class="btn btn-success" onclick="editdata(${obj.Sr_no},${user_id})">Edit</button>
+                           <button type="button" class="btn btn-danger" onclick="deletedata(${obj.Sr_no},${user_id})">Delete</button>
                            
 
                            </td>
@@ -113,7 +115,7 @@ function onLoad(){
 }
 
 
-function editdata(id){
+function editdata(id,user_id){
     var item_id=id;
     console.log("hello");
     
@@ -142,8 +144,8 @@ function editdata(id){
                  <td><input type="number" id="itm_prc_mod${val.Sr_no}" style="width: 50px;" placeholder="Enter Item price" value="${val.Item_price}" ></td>
                  <td>${val.Total_amount}</td>
                  <td>
-                    <button type="button" class="btn btn-success" onclick="updatedata(${val.Sr_no})">Update</button>
-                    <button type="button" class="btn btn-danger" onclick="deletedata(${val.Sr_no})">Delete</button>
+                    <button type="button" class="btn btn-success" onclick="updatedata(${val.Sr_no},${user_id})">Update</button>
+                    <button type="button" class="btn btn-danger" onclick="deletedata(${val.Sr_no},${user_id})">Delete</button>
                 </td>
                  
                  `;
@@ -157,7 +159,7 @@ function editdata(id){
      });
  }
 
- function updatedata(id)
+ function updatedata(id,user_id)
 {   var item_id=id;
     // console.log("hello");
     //let name=$('#itm_nm').val();
@@ -189,7 +191,7 @@ function editdata(id){
                if(data.active=1)
                {
                 
-                onLoad();
+                onLoad(user_id);
                }
             }
         },
@@ -203,7 +205,7 @@ function editdata(id){
                
 
 
-function deletedata(id)
+function deletedata(id,user_id)
 {
     console.log("hello");
     let product_id=id;
@@ -227,7 +229,7 @@ function deletedata(id)
                 // $('#info').html(`<h4 style="color:green; font-weight: bold">${data.message}</h4>`);
                 if(data.active=1)
                 {
-                    onLoad();
+                    onLoad(user_id);
                 //  $('#info').html('<h4 style="color:green; font-weight: bold">Your data is successfully deleted.</h4>');
                 }
             //    else if(data.active=0)

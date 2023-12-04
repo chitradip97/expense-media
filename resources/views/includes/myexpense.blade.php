@@ -21,6 +21,7 @@
     if(isset($data))
     $avatar=$data['avatar'];
     $user_name=$data['user_name'];
+    $user_id=$data['user_id'];
     ?>
       <!-- Top-Navbar -->
 <div class="top_nav" style="margin-bottom:10px;" >
@@ -90,6 +91,7 @@
                 <div class="chat mt-2">
                     <!-- <h2>Stacked form</h2> -->
                     {{-- <form action="/action_page.php"> --}}
+                        <input type="hidden"  id="user_id" value="{{$user_id}}">
                         <div id="info"></div>
                         <div class="mb-3 mt-3">
                             <label for="itm_nm">Items Name:</label>
@@ -133,7 +135,7 @@
                             <h5 class="basic_font">My Expendature :</h5>
                         </div>
                         <div class="col-md-2 flex-end">
-                            <button type="button" class="btn btn-primary" onclick="onLoad()">View Data</button>
+                            <button type="button" class="btn btn-primary" onclick="onLoad({{$user_id}})">View Data</button>
                         </div>
                     </div> 
                 </div>

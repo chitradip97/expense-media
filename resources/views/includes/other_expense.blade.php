@@ -83,20 +83,24 @@
                 
                 <div style="background-color:DodgerBlue;text-align: center;"><h4 style="display:inline-block; "><b>System Information :</b></h4></div>
                 <div class="chat mt-2">
+                    
                     <table class="table  table-striped">
+                        @if($all_data)
+                    @foreach($all_data as $data)
                         <tr class=".darker">
-                            <td>User-1 :</td>
-                            <td>Chitradip Dey</td>
+                            <td>User :</td>
+                            <td>{{$data->user_name}}</td>
                         </tr>
-                        <tr class=".lighter">
+                        {{-- <tr class=".lighter">
                             <td>User-2 :</td>
                             <td>Amit Singh</td>
                         </tr>
                         <tr class=".darker">
                             <td>User-3 :</td>
                             <td>Supriya Debnath</td>
-                        </tr>
-
+                        </tr> --}}
+                        @endforeach
+                        @endif
                     </table>
                 </div>
                 <!-- <textarea class="form-control mt-1" rows="2" col="3" id="comment"></textarea>
@@ -111,7 +115,11 @@
     <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card  ">
-                <div class="card-header"> <h5 class="basic_font">Chitro Expendature :</h5> </div>
+                @if($all_data)
+                    @foreach($all_data as $data)
+                <div class="card-header"> <h5 class="basic_font">{{$data->user_name}} Expendature :</h5> </div>
+                @if($all_data)
+                    @foreach($all_data as $data)
                 <div class="card-body ">
                             
                                            
@@ -240,6 +248,11 @@
                             
                             
                 </div>
+                    @endforeach
+                @endif
+                    @endforeach
+                @endif
+
                 <div class="card-header"> <h5 class="basic_font">Amit Expendature :</h5> </div>
                 <div class="card-body ">
                             
@@ -373,7 +386,7 @@
                 <div class="card-body ">
                             
                                            
-                        <table class="table table-striped">
+                    <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Sr No</th>
@@ -494,7 +507,7 @@
 
                                
                             </tbody>
-                        </table>
+                    </table>
                             
                             
                 </div>

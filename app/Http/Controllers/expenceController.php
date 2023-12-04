@@ -23,8 +23,8 @@ class expenceController extends Controller
             $data=[
                 'user_name'=>$user_name,
                 'user_email'=>$cookieValue,
-                'avatar'=>$avatar
-                
+                'avatar'=>$avatar,
+                'user_id'=>$user_id
     
             ];
         return view('includes.myexpense')->with(['data'=>$data]);;
@@ -74,8 +74,9 @@ class expenceController extends Controller
                 
     
             ];
-        
-        return view('includes.other_expense')->with(['data'=>$data]);;
+            $u_data=DB::table('user')->get();
+            //return view('includes.other_expense')->with(['all_data'=>$u_data]);
+        return view('includes.other_expense')->with(['data'=>$data,'all_data'=>$u_data]);;
         }
         else{
             return view('includes.login');
@@ -161,11 +162,13 @@ class expenceController extends Controller
     public function insert_product(Request $request)
     {
             $name=$request->input('name');
+            $user_id=$request->input('user_id');
             $quantity=$request->input('quantity');
             $weight=$request->input('weight');
             $price=$request->input('price');
             $Total_amount=$quantity*$price;
             $data=[
+                'user_id'=>$user_id,
                 'Item_name'=>$name,
                 'Item_quantity'=>$quantity,
                 'Item_unit'=>$weight,
@@ -176,9 +179,9 @@ class expenceController extends Controller
             return response()->json(['active'=>1]);
     }
 
-    public function view_data()
-    {
-        $p_data=DB::table('product_data')->get();
+    public function view_data(Request $request)
+    {$user_id=$request->input('user_id');
+        $p_data=DB::table('product_data')->where('user_id','=',$user_id)->get();
         return response()->json(['data'=>$p_data]);
         //return view('ajax.todo.view')->with(['all_data'=>$p_data]);
     }
@@ -227,6 +230,19 @@ class expenceController extends Controller
                 return response()->json(['active'=>1]);
             }
         }
+    
+    public function view_crud():View
+        {
+            $u_data=DB::table('user')->get();
+            return view('includes.other_expense')->with(['all_data'=>$u_data]);
+        }
+
+
+
+
+
+
+
 }
 
         

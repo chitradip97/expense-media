@@ -1,16 +1,16 @@
 // insert data
 function insert_data()
 {
-    console.log("hello");
+    // console.log("hello");
     let name=$('#itm_nm').val();
     let itm_qty=$('#itm_qty').val();
     let weight=$('#weight').val();
     let price=$('#itm_prc').val();
     var token = $('meta[name="csrf_token"]').attr('content');
-    console.log(price);
-    console.log(itm_qty);
-    console.log(weight);
-    console.log(token);
+    // console.log(price);
+    // console.log(itm_qty);
+    // console.log(weight);
+    // console.log(token);
     $.ajax({
         'url':"/insert_product",
         'method':'post',
@@ -79,7 +79,7 @@ function onLoad(){
                    var jsonData = data.data;
                    jsonData.forEach(function(obj){
                       content+=`
-                       <tr>
+                       <tr id="select_row${obj.Sr_no}" >
                            <td>${obj.Date}</td>
                            <td>${obj.Item_name}</td>
                            <td>${obj.Item_quantity}${obj.Item_unit}</td>
@@ -119,9 +119,12 @@ function editdata(id){
     console.log(id);
     $.ajax({
         
-        'url':`{{url('/edit_backend')}}/${id}`,
+        'url':"/edit_data",
         'method':'post',
-        'data':{'_token':'{{csrf_token()}}'},
+        'headers': {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        'data':{'item_id':item_id},
         'success':function(data,status){
             if(status=="success")
             {
@@ -130,19 +133,21 @@ function editdata(id){
                  console.log(jsonData);
                  content=``;
                 jsonData.forEach((val)=>{
+                    var id=val.Sr_no;
                  content=content+`
-                 <td>${val.id}</td>
-                 <td><input type="text" name="utitle" class="utitle" value="${val.title}"></td>
-                 <td><input type="text" name="udesc" class="udesc" value="${val.descripton}"></td>
-                 <td>${val.created}</td>
+                 <td>${val.Date}</td>
+                 <td>${val.Item_name}</td>
+                 <td><input type="number" id="itm_qty" style="width: 50px;" placeholder="Enter Item amount" value="${val.Item_quantity}">${val.Item_unit}</td>
+                 <td><input type="number" id="itm_prc" style="width: 50px;" placeholder="Enter Item price" value="${val.Item_price}" ></td>
+                 <td>${val.Total_amount}</td>
                  <td>
-                   <button onclick="update(${id})" class="btn btn-success">Done</button>
-                           <button onclick="delete_data()" class="btn btn-danger">Delete</button>
-                   </td>
+                    <button type="button" class="btn btn-success" onclick="updatedata(${val.Sr_no})">Update</button>
+                    <button type="button" class="btn btn-danger" onclick="deletedata(${val.Sr_no})">Delete</button>
+                </td>
                  
                  `;
                  })
-                $(`#select_row${item_id}`).html(content);
+                $(`#select_row${id}`).html(content);
              }
          },
           'error':function (error){

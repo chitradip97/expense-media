@@ -35,3 +35,5 @@ Route::get('/logout_user',[expenceController::class,'logout_user']);
 Route::post('/insert_product',[expenceController::class,'insert_product']);
 // view User data
 Route::get('/view_data',[expenceController::class,'view_data']);
+// edit product data
+Route::post('/edit_data',[expenceController::class,'edit_data']);

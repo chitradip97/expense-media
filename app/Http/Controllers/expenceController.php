@@ -181,4 +181,13 @@ class expenceController extends Controller
         return response()->json(['data'=>$p_data]);
         //return view('ajax.todo.view')->with(['all_data'=>$p_data]);
     }
+
+    public function edit_data(Request $request)
+    {      $id=$request->input('item_id');
+        $info=DB::table('product_data')->where('Sr_no','=',$id)->get();
+         if(DB::table('product_data')->where('Sr_no','=',$id)->get()->count()==1)
+         {
+             return response()->json(['data'=>$info]);
+         }
+    }
 }

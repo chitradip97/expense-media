@@ -128,30 +128,34 @@
         <div class="col-xl-12 col-md-12">
             <div class="card  ">
                 <div class="card-footer">
-                    <div class="col-md-10 ">
-                     <h5 class="basic_font">My Expendature :</h5>
-                    </div>
-                     <div class="col-md-2 flex-end">
-                        <a href="{{url('/insert_crud')}}"><button type="button" class="btn btn-primary">Insert</button></a>
+                    <div class="row">
+                        <div class="col-md-10 ">
+                            <h5 class="basic_font">My Expendature :</h5>
+                        </div>
+                        <div class="col-md-2 flex-end">
+                            <button type="button" class="btn btn-primary" onclick="onLoad()">View Data</button>
+                        </div>
                     </div> 
-                    </div>
-                <div class="card-body ">
+                </div>
+                <div class="card-body " id="table_data">
                             
                                            
-                        <table class="table table-striped">
+                        {{-- <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Sr No</th>
+                                    
                                     <th>Date</th>
-                                    <th>Items</th>
-                                    <th>Amount</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity(unit)</th>
+                                    <th>Price</th>
+                                    <th>Total Amount</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> --}}
 
                                 
-                                <tr>
+                                {{-- <tr>
                                     <td>1</td>
                                     <td>10/5/23</td>
                                     <td>Basmati Rice</td>
@@ -169,9 +173,9 @@
                                         <a href="view_customer_edit.php"><button type="button" class="btn btn-success">Edit</button></a>
                                         <a href="view_customer_delete.php"><button type="button" class="btn btn-danger">Delete</button></a>
                                     </td>
-                                </tr>
+                                </tr> --}}
 
-                                <tr>
+                                {{-- <tr>
                                     <td>2</td>
                                     <td>15/5/23</td>
                                     <td>Amul Milk</td>
@@ -189,7 +193,7 @@
                                         <a href="view_customer_edit.php"><button type="button" class="btn btn-success">Edit</button></a>
                                         <a href="view_customer_delete.php"><button type="button" class="btn btn-danger">Delete</button></a>
                                     </td>
-                                </tr>
+                                </tr> --}}
 
                                 {{-- <tr>
                                     <td>3</td>

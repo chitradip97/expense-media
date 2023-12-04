@@ -33,3 +33,5 @@ Route::post('/login_verify',[expenceController::class,'login_verify']);
 Route::get('/logout_user',[expenceController::class,'logout_user']);
 // insert product data to database
 Route::post('/insert_product',[expenceController::class,'insert_product']);
+// view User data
+Route::get('/view_data',[expenceController::class,'view_data']);

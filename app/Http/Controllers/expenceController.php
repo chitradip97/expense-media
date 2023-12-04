@@ -174,4 +174,11 @@ class expenceController extends Controller
             DB::table('product_data')->insert($data);
             return response()->json(['active'=>1]);
     }
+
+    public function view_data()
+    {
+        $p_data=DB::table('product_data')->get();
+        return response()->json(['data'=>$p_data]);
+        //return view('ajax.todo.view')->with(['all_data'=>$p_data]);
+    }
 }

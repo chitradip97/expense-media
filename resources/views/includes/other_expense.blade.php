@@ -85,10 +85,11 @@
                 <div class="chat mt-2">
                     
                     <table class="table  table-striped">
+                        <?php $i = 0; ?>
                         @if($all_data)
                     @foreach($all_data as $data)
                         <tr class=".darker">
-                            <td>User :</td>
+                            <td>User :<?php echo ++$i;?></td>
                             <td>{{$data->user_name}}</td>
                         </tr>
                         {{-- <tr class=".lighter">
@@ -261,7 +262,7 @@
                     @endforeach
                 @endif
 
-                <div class="card-header"> <h5 class="basic_font">Amit Expendature :</h5> </div>
+                {{-- <div class="card-header"> <h5 class="basic_font">Amit Expendature :</h5> </div>
                 <div class="card-body ">
                             
                                            
@@ -518,7 +519,7 @@
                     </table>
                             
                             
-                </div>
+                </div> --}}
                 
                     
                     

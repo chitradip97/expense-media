@@ -118,29 +118,36 @@
                 @if($all_data)
                     @foreach($all_data as $data)
                 <div class="card-header"> <h5 class="basic_font">{{$data->user_name}} Expendature :</h5> </div>
-                @if($all_data)
-                    @foreach($all_data as $data)
+                
                 <div class="card-body ">
                             
                                            
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Sr No</th>
+                                    <th>Sr.no</th>
                                     <th>Date</th>
-                                    <th>Items</th>
-                                    <th>Amount</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity(unit)</th>
+                                    <th>Price</th>
+                                    <th>Total Amount</th>
+                                    {{-- <th>Action</th> --}}
                                     <!-- <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-
-                                
+                                <?php $i = 0; ?>
+                                @if($product_data)
+                    @foreach($product_data as $products)
+                                @if($products->user_id==$data->user_id)
                                 <tr>
-                                    <td>1</td>
-                                    <td>10/5/23</td>
-                                    <td>Basmati Rice</td>
-                                    <td>
+                                    <td><?php echo ++$i;?></td>
+                                    <td>{{$products->Date}}</td>
+                                    <td>{{$products->Item_name}}</td>
+                                    <td>{{$products->Item_quantity}}{{$products->Item_unit}}</td>
+                                    <td>{{$products->Item_price}}</td>
+                                    <td>{{$products->Total_amount}}</td>
+                                    {{-- <td>
                                         10
                                         <select name="weight" id="weight">
                                             <option value="KG">KG</option>
@@ -149,11 +156,13 @@
                                             <option value="Pc">Pc</option>
                                         </select>
                                         
-                                    </td>
+                                    </td> --}}
                                     
                                 </tr>
-
-                                <tr>
+                                @endif
+                                @endforeach
+                                @endif
+                                {{-- <tr>
                                     <td>2</td>
                                     <td>15/5/23</td>
                                     <td>Amul Milk</td>
@@ -235,7 +244,7 @@
                                         
                                     </td>
                                     
-                                </tr>
+                                </tr> --}}
 
                                 
                                
@@ -247,9 +256,8 @@
                         </table>
                             
                             
-                </div>
-                    @endforeach
-                @endif
+                
+            
                     @endforeach
                 @endif
 

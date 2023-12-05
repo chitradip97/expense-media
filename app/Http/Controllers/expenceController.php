@@ -75,8 +75,37 @@ class expenceController extends Controller
     
             ];
             $u_data=DB::table('user')->get();
+            $product_data_updated=DB::table('product_data')->get();
+            $product_details=[];
+            foreach($u_data as $user)
+            {
+                $user_id=$user->user_id;
+                $product_data=DB::table('product_data')->where('user_id','=',$user_id)->get();
+                foreach($product_data as $product)
+                {
+                    $Date=$product->Date;
+                    $Item_name=$product->Item_name;
+                    $Item_quantity=$product->Item_quantity;
+                    $Item_unit=$product->Item_unit;
+                    $Item_price=$product->Item_price;
+                    $Total_amount=$product->Total_amount;
+                    $product_array=[
+                        'Date'=>$Date,
+                        'Item_name'=>$Item_name,
+                        'Item_quantity'=>$Item_quantity,
+                        'Item_unit'=>$Item_unit,
+                        'Item_price'=>$Item_price,
+                        'Total_amount'=>$Total_amount,
+
+                    ];
+                    
+                }
+                $merge = array_merge($product_details, $product_array);
+                //$product_details=$product_details+$product_data;
+            }
+
             //return view('includes.other_expense')->with(['all_data'=>$u_data]);
-        return view('includes.other_expense')->with(['data'=>$data,'all_data'=>$u_data]);;
+        return view('includes.other_expense')->with(['data'=>$data,'all_data'=>$u_data,'product_data'=>$product_data_updated]);
         }
         else{
             return view('includes.login');

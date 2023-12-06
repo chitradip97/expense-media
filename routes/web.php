@@ -44,3 +44,5 @@ Route::post('/delete_product',[expenceController::class,'delete_product']);
 
 // chat insert
 Route::post('/chat_insert',[expenceController::class,'chat_insert']);
+// get chat data
+Route::get('/view_chat',[expenceController::class,'view_chat']);

@@ -53,6 +53,7 @@ function insert_data()
 }
 
 function onLoad(user_id){
+    console.log('hello ajax');
 var user_id=user_id;
     $.ajax({
         'url':"/view_data",
@@ -247,11 +248,11 @@ function deletedata(id,user_id)
     });
 }
 
- function chat_send(user_id)
+ function chatSend(user_id)
  {
     let comment=$(`#comment`).val();
     $.ajax({
-        'url':"/insert_product",
+        'url':"/chat_insert",
         'method':'post',
         'headers': {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -286,3 +287,82 @@ function deletedata(id,user_id)
         }
     });
  }
+
+        function chatload(id){
+            console.log("chat ajax");
+            var user_id=id;
+            $.ajax({
+                'url':"/view_chat",
+                'method':'get',
+                'data':{},
+                'success':(data,status)=>{
+                     if(status =='success'){
+                        // $('#table_data').html(`
+                        //  <p><img src='{{asset('./images/ajax-loader.gif')}}' height='120px' width='120px'/> Please Wait ... </p>`);                        
+                        
+                        //     $('#chat_box').html('');
+                        //     console.log(data);  //response coming from ajax
+                        //    var content =`
+                        //    <table class="table table-striped">
+                        //    <thead>
+                        //        <tr>
+                        //            <th>Date</th>
+                        //            <th>Item Name</th>
+                        //            <th>Quantity(unit)</th>
+                        //            <th>Price</th>
+                        //            <th>Total Amount</th>
+                        //            <th>Action</th>
+                        //        </tr>
+                        //    </thead>
+                        //    <tbody>
+                        //    `;
+                        var content="";
+                           var jsonData = data.data;
+                           console.log(jsonData);
+                           jsonData.forEach(function(obj){
+                            console.log(obj.user_id);
+                                if (obj.user_id==user_id)
+                                {
+                                    content+=`
+                                    <div class="container-fluid lighter" >
+                                        
+                                        
+                                        <span class="time-right">${obj.time}</span>
+                                        
+                                        <p class="chat_font">&nbsp;&nbsp; ${obj.chat_description}</p>
+                                    </div>`
+                                        
+                        
+                                }
+                                else
+                                {
+                                    content+=`
+                                    <div class="container-fluid darker">
+                                        
+                                        <img src="${obj.avatar}" alt="Avatar" class=" user_logo_right mt-2" >
+                                        <span class="time-left">${obj.time}</span>
+                                        
+                                        <p class="chat_font">&nbsp;&nbsp; ${obj.chat_description}</p>
+                                    </div>`
+                        
+                                }
+
+                            
+                           });
+                        //    content+=`</tbody>
+                        //             </table>`;
+                           //console.log(content);
+                           $('#chat_box').html(content);
+                          
+        
+        
+                        
+                        
+                     }
+                },
+                'error' :(error)=>{
+                    if(error) throw error;
+                }
+            });
+
+        }

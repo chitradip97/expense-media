@@ -42,11 +42,13 @@ class expenceController extends Controller
             {
             $user_name=$data->user_name;
             $avatar=$data->avatar;
+            $user_id=$data->user_id;
             }
             $data=[
                 'user_name'=>$user_name,
                 'user_email'=>$cookieValue,
-                'avatar'=>$avatar
+                'avatar'=>$avatar,
+                'user_id'=>$user_id
                 
     
             ];
@@ -266,14 +268,14 @@ class expenceController extends Controller
             return view('includes.other_expense')->with(['all_data'=>$u_data]);
         }
 
-        public function chat_insert()
+        public function chat_insert(Request $request)
         {
             $user_id=$request->input('user_id');
             $comment=$request->input('comment');
             $data=[
                 
                 'user_id'=>$user_id,
-                'comment'=>$comment
+                'chat_description'=>$comment
                 
             ];
             DB::table('chat_db')->insert($data);
@@ -281,6 +283,16 @@ class expenceController extends Controller
 
         }
 
+        public function view_chat()
+        {
+            //$user_id=$request->input('user_id');
+        // $p_data=DB::table('chat_db')->get();
+        $p_data = DB::table('chat_db')
+            ->join('user', 'chat_db.user_id', '=', 'user.user_id')
+            ->select('chat_db.*', 'user.avatar')
+            ->get();
+        return response()->json(['data'=>$p_data]);
+        }
 
 
 

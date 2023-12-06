@@ -134,6 +134,7 @@ li {
           .lighter{
             border-color: #ccc;
             background-color: rgb(34, 169, 227);
+            min-height: 15px;
           }
           
           .container::after {
@@ -155,6 +156,20 @@ li {
             margin-left: 20px;
             margin-right:0;
           }
+          .user_logo_left{
+            float: left;
+            height: 30px;
+            width: 30px;
+            /* border: 1pc solid gray;
+            border-radius: 50%; */
+          }
+          .user_logo_right{
+            float: right;
+            height: 30px;
+            width: 30px;
+            /* border: 1pc solid gray;
+            border-radius: 50%; */
+          }
           
           .time-right {
             float: right;
@@ -172,6 +187,7 @@ li {
           .chat_font{
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-weight: 4px !important;
+            min-height:50px ;
           }
 
           /* newsfeed */

@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>roomies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <script type="text/javascript" src="{{ URL::asset('assets/js/script.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
@@ -18,6 +21,16 @@
     $user_name=$data['user_name'];
     $user_id=$data['user_id'];
     ?>
+    <script>
+        // window.onload = function() 
+        // {
+        //         //  var reloading = sessionStorage.getItem("reloading");
+        //         //  if (reloading) {
+        //         //      sessionStorage.removeItem("reloading");
+        //         chatload(`${$user_id}`);
+        //     //  }
+        // }
+    </script>
       <!-- Top-Navbar -->
 <div class="top_nav" style="margin-bottom:10px;" >
     <nav class="navbar-light bg-info">
@@ -81,14 +94,18 @@
 <!-- <div class="container-fluid">
     <div class="row  ">  -->
 
-<div class="right_sidebar  mt-2 ms-2 mt-2 me-2">
+<div class="right_sidebar  mt-2 ms-2 mt-2 me-2" onload="chatload({{$user_id}})">
         <nav id="sidebar" class="bg_color  p-2  ">
             <!-- <div class="container-fluid "> -->
                 
-                <div style="background-color:DodgerBlue;text-align: center;"><h4 style="display:inline-block; "><b>Chat Messages</b></h4></div>
-                <div class="chat mt-2">
-                    <div class="container-fluid lighter" >
+                <div style="background-color:DodgerBlue;text-align: center;">
+                    <h4 style="display:inline-block; "><b>Chat Messages</b></h4>
+                    <button type="button" class="btn btn-primary" onclick="chatload({{$user_id}})">View Data</button>
+                </div>
+                <div class="chat mt-2" id="chat_box">
+                    {{-- <div class="container-fluid lighter" >
                         <img src="" alt="Avatar" style="width:100%; ">
+                        <img src="${obj.avatar}" alt="" class="user_logo_left mt-2" >
                         <span class="time-right">11:00</span>
                         <p class="chat_font">Hello. How are you today?</p>
                         
@@ -125,10 +142,10 @@
                         <span class="time-left">11:07</span>
                         <p class="chat_font">Sweet! So, what do you wanna do today?</p>
                         
-                    </div>
+                    </div> --}}
                 </div>
-                <textarea class="form-control mt-1" rows="2" col="3" id="comment"></textarea>
-                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" onclick="chat_send($user_id)">Send</button>
+                <textarea class="form-control mt-1" rows="2" col="3" id="comment" maxlength="99"></textarea>
+                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" onclick="chatSend({{$user_id}})">Send</button>
             <!-- </div> -->
         </nav>
 </div>
@@ -139,7 +156,10 @@
     <div class="row">
         <div class="col-xl-12 col-md-12">
             <div class="card  ">
-                <div class="card-footer"> <h5 class="basic_font">News Feed :</h5> </div>
+                <div class="card-footer">
+                     <h5 class="basic_font">News Feed :</h5> 
+                     
+                    </div>
                 <div class="card-body ">
                          
                     <!-- <div class="container "> -->

@@ -48,7 +48,7 @@
                         </ul>
                     </li>    
                 {{-- <li ><a href="" class="icon"><i class="fa fa-user icon_style ms-4" aria-hidden="true"></i></a></li> --}}
-                <li ><a href="" class="icon"><i class="fa fa-bell icon_style ms-4" aria-hidden="true"></i></a></li>
+                <li ><a href="" class="icon"><i class="fa fa-bell icon_style ms-4" aria-hidden="true"><span class="badge bg-dark" style="font-weight: 2px;padding:2px 2px 0px 2px;margin:0px 0px 0px 0px !important">4</span></i></a></li>
                 <li ><a href="" class="icon"><i class="fa fa-comment icon_style ms-4" aria-hidden="true"></i></a></li>
                 <li ><a href="" class="icon"><i class="fa fa-shopping-cart icon_style ms-4" aria-hidden="true"></i></a></li>
         </div>

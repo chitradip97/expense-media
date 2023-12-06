@@ -246,3 +246,43 @@ function deletedata(id,user_id)
         }
     });
 }
+
+ function chat_send(user_id)
+ {
+    let comment=$(`#comment`).val();
+    $.ajax({
+        'url':"/insert_product",
+        'method':'post',
+        'headers': {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        'data':{
+             'user_id':user_id,
+            'comment':comment
+        },
+        'success':function(data,status){
+            if(status=="success")
+            {
+                console.log(data);
+               if(data.active=1)
+               {
+                $('#info').html(`<div class="alert alert-danger alert-dismissible fade show">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                 Your data is successfully inserted
+                </div>`);
+                onLoad(user_id);
+               }
+               else
+               {
+                $('#info').html('<h4 style="color:red; font-weight: bold">There is some Error.</h4>');
+               }
+                
+               
+
+            }
+        },
+        'error':function (error){
+            console.log(error);
+        }
+    });
+ }

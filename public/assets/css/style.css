@@ -17,6 +17,10 @@ li {
     font: normal normal normal 50px/2 FontAwesome !important;
     font-size:xx-large !important;
 }
+.badge{
+  font-size: 20px;
+  font-weight: 20px;
+}
 
 
 /* left sidebar */

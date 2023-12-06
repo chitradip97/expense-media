@@ -266,8 +266,20 @@ class expenceController extends Controller
             return view('includes.other_expense')->with(['all_data'=>$u_data]);
         }
 
+        public function chat_insert()
+        {
+            $user_id=$request->input('user_id');
+            $comment=$request->input('comment');
+            $data=[
+                
+                'user_id'=>$user_id,
+                'comment'=>$comment
+                
+            ];
+            DB::table('chat_db')->insert($data);
 
 
+        }
 
 
 

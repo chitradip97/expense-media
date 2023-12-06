@@ -41,3 +41,6 @@ Route::post('/edit_data',[expenceController::class,'edit_data']);
 Route::post('/update_product',[expenceController::class,'update_product']);
 // delete data
 Route::post('/delete_product',[expenceController::class,'delete_product']);
+
+// chat insert
+Route::post('/chat_insert',[expenceController::class,'chat_insert']);

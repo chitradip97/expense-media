@@ -16,6 +16,7 @@
     if(isset($data))
     $avatar=$data['avatar'];
     $user_name=$data['user_name'];
+    $user_id=$data['user_id'];
     ?>
       <!-- Top-Navbar -->
 <div class="top_nav" style="margin-bottom:10px;" >
@@ -127,7 +128,7 @@
                     </div>
                 </div>
                 <textarea class="form-control mt-1" rows="2" col="3" id="comment"></textarea>
-                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;">Send</button>
+                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" onclick="chat_send($user_id)">Send</button>
             <!-- </div> -->
         </nav>
 </div>

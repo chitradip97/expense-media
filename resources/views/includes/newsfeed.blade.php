@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     <script type="text/javascript" src="{{ URL::asset('assets/js/script.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    @vite(['resources/js/app.js'])
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
@@ -144,8 +145,9 @@
                         
                     </div> --}}
                 </div>
+                <input type="hidden" id='user_id' value={{$user_id}}>
                 <textarea class="form-control mt-1" rows="2" col="3" id="comment" maxlength="99"></textarea>
-                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" onclick="chatSend({{$user_id}})">Send</button>
+                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" id="sendchat" >Send</button>
             <!-- </div> -->
         </nav>
 </div>

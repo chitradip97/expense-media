@@ -264,14 +264,21 @@ function deletedata(id,user_id)
         'success':function(data,status){
             if(status=="success")
             {
-                console.log(data);
+                console.log(data.active);
                if(data.active=1)
                {
                 $('#info').html(`<div class="alert alert-danger alert-dismissible fade show">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                  Your data is successfully inserted
                 </div>`);
-                onLoad(user_id);
+                chatload(user_id);
+                var jsonData = data.data;
+                           console.log(jsonData);
+                           jsonData.forEach(function(obj){
+                            console.log(data.user_id);
+                            chatload(obj.user_id);
+                           })
+
                }
                else
                {
@@ -297,25 +304,7 @@ function deletedata(id,user_id)
                 'data':{},
                 'success':(data,status)=>{
                      if(status =='success'){
-                        // $('#table_data').html(`
-                        //  <p><img src='{{asset('./images/ajax-loader.gif')}}' height='120px' width='120px'/> Please Wait ... </p>`);                        
                         
-                        //     $('#chat_box').html('');
-                        //     console.log(data);  //response coming from ajax
-                        //    var content =`
-                        //    <table class="table table-striped">
-                        //    <thead>
-                        //        <tr>
-                        //            <th>Date</th>
-                        //            <th>Item Name</th>
-                        //            <th>Quantity(unit)</th>
-                        //            <th>Price</th>
-                        //            <th>Total Amount</th>
-                        //            <th>Action</th>
-                        //        </tr>
-                        //    </thead>
-                        //    <tbody>
-                        //    `;
                         var content="";
                            var jsonData = data.data;
                            console.log(jsonData);
@@ -366,3 +355,10 @@ function deletedata(id,user_id)
             });
 
         }
+
+        // setInterval(function(){
+        //     chatload();
+        //     //fetch_user();
+        //    }, 1000);
+        //    var myInterval = setInterval(chatload, 1000);
+           //clearInterval(myInterval);

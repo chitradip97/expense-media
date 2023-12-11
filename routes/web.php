@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\controllers\expenceController;
+use App\Events\Message;
+// use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +48,7 @@ Route::post('/delete_product',[expenceController::class,'delete_product']);
 Route::post('/chat_insert',[expenceController::class,'chat_insert']);
 // get chat data
 Route::get('/view_chat',[expenceController::class,'view_chat']);
+
+// chat
+Route::post('/send-message',[expenceController::class,'send-message']);
+

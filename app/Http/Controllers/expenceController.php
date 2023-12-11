@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
+use App\Events\Message;
 
 class expenceController extends Controller
 {
@@ -279,6 +280,8 @@ class expenceController extends Controller
                 
             ];
             DB::table('chat_db')->insert($data);
+            $u_data=DB::table('user')->get();
+            return response()->json(['active'=>1,'data'=>$u_data]);
 
 
         }
@@ -292,6 +295,11 @@ class expenceController extends Controller
             ->select('chat_db.*', 'user.avatar')
             ->get();
         return response()->json(['data'=>$p_data]);
+        }
+
+        public function send_message(Request $request){
+            event(new Message($request->userid, $request->message));
+            return['success'=> true];
         }
 
 

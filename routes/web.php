@@ -50,5 +50,6 @@ Route::post('/chat_insert',[expenceController::class,'chat_insert']);
 Route::get('/view_chat',[expenceController::class,'view_chat']);
 
 // chat
-Route::post('/send-message',[expenceController::class,'send-message']);
+Route::post('/send_message',[expenceController::class,'send_message']);
 
+Route::post('/broadcast-message', [expenceController::class,'broadcast_message'])->name('broadcast_message');

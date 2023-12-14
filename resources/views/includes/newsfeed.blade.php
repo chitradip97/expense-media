@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
     <script type="text/javascript" src="{{ URL::asset('assets/js/script.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    @vite(['resources/js/app.js'])
+    @vite(['resources/css/app.css','resources/js/app.js'])
     <!-- <link rel="stylesheet" type="text/css" href="./assets/js/script.css"> -->
 </head>
 <body>
@@ -145,12 +145,42 @@
                         
                     </div> --}}
                 </div>
-                <input type="hidden" id='user_id' value={{$user_id}}>
-                <textarea class="form-control mt-1" rows="2" col="3" id="comment" maxlength="99"></textarea>
-                <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" id="sendchat" >Send</button>
+                <div id='chat-part'>
+                <form id="chat-form">
+                @csrf
+                <input type="hidden" name='user_id' id='user_id' value="{{$user_name}}">
+                <textarea class="form-control mt-1" rows="2" col="3" name="message" id="message" maxlength="99"></textarea>
+                <input type="submit" value="Send" class="btn btn-primary mt-1 padding-bottom-3" style="float:right;">
+                {{-- <button type="submit" class="btn btn-primary mt-1 padding-bottom-3" style="float:right;" id="sendchat" >Send</button> --}}
+            </form>
+                </div>
             <!-- </div> -->
         </nav>
 </div>
+
+<script>
+    
+     $('#chat-part').submit(function(event){
+        //$(document).on('click','#sendchat',function(e){
+        event.preventDefault();
+        var userid=$('#user_id').val();
+        var message=$('#message').val();
+        console.log(userid);
+        var formData=$(this).serialize();
+        $.ajax({
+            url:"{{url('broadcast-message')}}",
+            type:'POST',
+            'headers': {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+            data:{userid:userid,message:message}
+
+        });
+        $('#message').val("");
+
+    });
+
+</script>
 <!-- </div>
 </div> -->
 <!-- body content -->

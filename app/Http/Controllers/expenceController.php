@@ -28,7 +28,7 @@ class expenceController extends Controller
                 'user_id'=>$user_id
     
             ];
-        return view('includes.myexpense')->with(['data'=>$data]);;
+        return view('includes.myexpense')->with(['data'=>$data]);
         }
         else{
             return view('includes.login');
@@ -300,6 +300,10 @@ class expenceController extends Controller
         public function send_message(Request $request){
             event(new Message($request->userid, $request->message));
             return['success'=> true];
+        }
+
+        public function broadcast_message(Request $request){
+            event(new Message($request->userid,$request->message));
         }
 
 

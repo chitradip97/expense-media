@@ -53,3 +53,11 @@ Route::get('/view_chat',[expenceController::class,'view_chat']);
 Route::post('/send_message',[expenceController::class,'send_message']);
 
 Route::post('/broadcast-message', [expenceController::class,'broadcast_message'])->name('broadcast_message');
+
+// post data
+Route::post('/post_submit',[expenceController::class,'post_submit']);
+
+// get post data 
+Route::get('/get_post',[expenceController::class,'get_post']);
+Route::get('/post_view',[expenceController::class,'post_view']);
+

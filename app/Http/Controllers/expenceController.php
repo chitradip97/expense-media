@@ -53,7 +53,9 @@ class expenceController extends Controller
                 
     
             ];
-            return view('includes.newsfeed')->with(['data'=>$data]);
+            $post_data=DB::table('post_db')->get();
+
+            return view('includes.newsfeed')->with(['data'=>$data,'post_data'=>$post_data]);
         }
         else{
             return view('includes.login');
@@ -305,6 +307,62 @@ class expenceController extends Controller
         public function broadcast_message(Request $request){
             event(new Message($request->userid,$request->message));
         }
+
+        public function post_submit(Request $request)
+        {
+            $user_name=$request->input('user_name');
+            $heading=$request->input('heading');
+            $comment=$request->input('comment');
+            
+            $img_avatar=$request->file('myfile');
+            ;
+            if($img_avatar)
+            {
+            $filename=time().'_'.$img_avatar->getclientOriginalName();
+            }
+            $data_location='post_img';
+            $img_avatar->move($data_location,$filename);
+            $data=[
+                'user_name'=>$user_name,
+                'heading'=>$heading,
+                'comment'=>$comment,
+                'post_img'=>'post_img/'.$filename
+            ];
+            $affectedRows = DB::table('post_db')->insert($data);
+            return back();
+            // if (Cookie::has('user_email')){
+            //     $cookieValue = Cookie::get('user_email');
+            //     $user_data=DB::table('user')->where('user_email','=',$cookieValue)->get();
+            //     foreach($user_data as $data)
+            //     {
+            //     $user_name=$data->user_name;
+            //     $avatar=$data->avatar;
+            //     $user_id=$data->user_id;
+            //     }
+            //     $data=[
+            //         'user_name'=>$user_name,
+            //         'user_email'=>$cookieValue,
+            //         'avatar'=>$avatar,
+            //         'user_id'=>$user_id
+                    
+        
+            //     ];
+            // return view('includes.newsfeed')->with(['data'=>$data]);
+            // }
+        //    
+        }
+        // public function post_view()
+        // {
+        //     $post_data=DB::table('post_db')->get();
+        //     return view('includes.newsfeed')->with(['post_data'=>$post_data]);
+        // }
+
+        // public function get_post()
+        // {
+        //     $post_db  = DB::table('post_db')->get();
+            
+        //     return response()->json($post_db);
+        // }
 
 
 

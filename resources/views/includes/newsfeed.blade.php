@@ -206,9 +206,14 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-10">
-                                            <textarea class="form-control mt-1" rows="2" col="3" id="comment"></textarea>
-                                            <button class="btn btn-primary mt-1 padding-bottom-3" style="float:right;">Post</button>
-                                            
+                                            <form action="{{'/post_submit'}}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                            <input type="hidden" id="user_name" name="user_name" value="{{$user_name}}">
+                                            <input type="text" class="form-control mt-1" name="heading" placeholder="Enter Your Heading" id="heading">
+                                            <textarea class="form-control mt-1" name="comment" rows="2" col="3" id="comment" placeholder="Share Your Thoughts"></textarea>
+                                            <input type="file" id="myfile" name="myfile"  class="mt-1"/>
+                                            <button type="submit" class="btn btn-primary mt-1 padding-bottom-3" style="float:right;"  >Post</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -218,20 +223,24 @@
                                         <div class="card-header">
                                             <h3><b>Status :</b></h3>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body" id="body_content">
                                             <!-- post content -->
+                                            @if($post_data)
+                                            @foreach($post_data as $data)
                                             <div class="container mt-3 ">
                                                 
                                                 <div class="card ms-5" style="width:400px">
-                                                    <img class="card-img-top" src="../assets/img/party.jpg" alt="Card image" style="width:100%">
+                                                    <img class="card-img-top" src="{{$data->post_img}}" alt="Card image" style="width:100%">
                                                     <div class="card-body">
-                                                    <h4 class="card-title">Launch a party</h4>
-                                                    <p class="card-text">Let's have fun Guy's. Tomorrow be there at sharp 8PM. Adress:Eden Garden, franklin club. </p>
-                                                    <p class="card-text text-muted">Post By-<b>Chitro</b></p>
-                                                    <a href="#" class="btn btn-primary ms-5">Comments</a>
+                                                    <h4 class="card-title">{{$data->heading}}</h4>
+                                                    <p class="card-text">{{$data->comment}} </p>
+                                                    <p class="card-text text-muted">Post By-<b>{{$data->user_name}}</b></p>
+                                                    <a href="#" class="btn btn-primary ms-5">comments</a>
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endforeach
+                                            @endif
                                         </div> 
                                         
                                     <!-- </div> -->

@@ -362,3 +362,84 @@ function deletedata(id,user_id)
         //    }, 1000);
         //    var myInterval = setInterval(chatload, 1000);
            //clearInterval(myInterval);
+           
+
+
+           function post_submit(){
+           var $user_name=$("#user_name").val();
+           var $heading=$("#heading").val();
+           var  $comment=$("#comment").val();
+           var myfile=$("#myfile").val();
+           var filename=myfile.substring(12,myfile.length);
+           //var myfile= $($("#myfile").val()).replaceWith("Hello world!");
+           //var filename=myfile.value.replace("C:\\fakepath\\", "");
+            // var fileNameIndex = myfile.lastIndexOf("/") + 1;
+            // var filename = myfile.substr(fileNameIndex);
+            console.log(filename);
+            $.ajax({
+                'url':"/post_submit",
+                'method':'post',
+                'headers': {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                'data':{user_name:$user_name,heading:$heading,comment:$comment,myfile:filename}, 
+                'success':(data,status)=>{
+                     if(status =='success'){
+                        $heading=$("#heading").val(" ");
+                        $comment=$("#comment").val(" ");
+                        $comment=$("#comment").val(" ");
+                        postload();
+                        
+                     }
+                },
+                'error' :(error)=>{
+                    if(error) throw error;
+                }
+            });
+        }
+
+        function postload(){
+            $.ajax({
+                'url':"/get_post",
+                'method':'get',
+                'data':{},
+                'success':(data,status)=>{
+                     if(status =='success'){
+                        $('#body_content').html(`
+                         <p><img src='{{asset('"../assets/img/loading.gif"')}}' height='120px' width='120px'/> Please Wait ... </p>`);                        
+                        setTimeout(function(){
+                            $('#body_content').html('');
+                            console.log(data);  //response coming from ajax
+                    
+                           var jsonData = data;
+                           jsonData.forEach(function(obj){
+                              content+=`
+                            <div class="container mt-3 ">
+                                                
+                               <div class="card ms-5" style="width:400px">
+                                   <img class="card-img-top" src="${obj.post_img}" alt="Card image" style="width:100%">
+                                   <div class="card-body">
+                                   <h4 class="card-title">${obj.heading}</h4>
+                                   <p class="card-text">${obj.comment} </p>
+                                   <p class="card-text text-muted">Post By-<b>${obj.user_name}</b></p>
+                                   <a href="#" class="btn btn-primary ms-5">Comments</a>
+                                   </div>
+                               </div>
+                           </div>
+                              `;
+                           });
+                           
+                           //console.log(content);
+                           $('#body_content').html(content);
+                          
+
+
+                        },3000);
+                        
+                     }
+                },
+                'error' :(error)=>{
+                    if(error) throw error;
+                }
+            });
+        }
